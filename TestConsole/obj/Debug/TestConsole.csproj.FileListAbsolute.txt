@@ -1,0 +1,6 @@
+C:\Users\danon\documents\visual studio 2015\Projects\MVCTut\TestConsole\bin\Debug\TestConsole.exe.config
+C:\Users\danon\documents\visual studio 2015\Projects\MVCTut\TestConsole\bin\Debug\TestConsole.exe
+C:\Users\danon\documents\visual studio 2015\Projects\MVCTut\TestConsole\bin\Debug\TestConsole.pdb
+C:\Users\danon\documents\visual studio 2015\Projects\MVCTut\TestConsole\obj\Debug\TestConsole.exe
+C:\Users\danon\documents\visual studio 2015\Projects\MVCTut\TestConsole\obj\Debug\TestConsole.pdb
+C:\Users\danon\documents\visual studio 2015\Projects\MVCTut\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache

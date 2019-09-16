@@ -1,0 +1,79 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<MVCTut.Models.CustomerAccount>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountStatus)
+                    </th>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.Branch.branchName)
+                    </th>
+                    <th>
+
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountStatus)
+            </td>
+           
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.branchName)
+            </td>
+            @if (item.AccountStatus.ToString() == MVCTut.Models.Status.Active.ToString())
+                {
+                <td>
+                    @Html.ActionLink("Close", "ChangeStatus", new { id = item.Id })
+                </td>
+            }
+            else if(string.IsNullOrEmpty(item.AccountStatus.ToString()) || item.AccountStatus == MVCTut.Models.Status.Inactive.ToString())
+            {
+                <td>
+                    @Html.ActionLink("Open", "ChangeStatus", new { id = item.Id })
+                </td>
+            }
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+               
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+        }
+
+            </table>
+        </div>
+        </div>
+    </div>

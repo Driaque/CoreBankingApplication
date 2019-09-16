@@ -1,0 +1,38 @@
+﻿<div id="page-wrapper">
+
+    @model MVCTut.Models.Branch
+
+    @{
+        ViewBag.Title = "Details";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Branch</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.branchName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.branchName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.branchAddress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.branchAddress)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.branchID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

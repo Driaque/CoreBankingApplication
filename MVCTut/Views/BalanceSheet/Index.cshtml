@@ -1,0 +1,111 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<Core.BalanceSheet>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Balance Sheet</h2>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>Asset</th>                    <th>N </th>                    <th>N</th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+            if (item.GLCatergoryName == "Asset")
+            {
+        <tr>
+            <td>
+                @item.GLAccountName
+            </td>
+            <td>
+                @item.Total.ToString("N02")
+            </td>
+            <td></td>
+
+        </tr>
+           }
+
+        }                <tr>
+                    <td><strong>Total Asset</strong></td>
+                    <td>&nbsp;</td>
+                    <td>@Model.Where(i => i.GLCatergoryName == "Asset").Sum(i => i.Total).ToString("N02")</td>
+                </tr>
+
+
+                <tr>
+                    <th>   Liability   </th>
+                    <th>   N      </th>
+                    <th>     N      </th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+            if (item.GLCatergoryName == "Liability")
+            {
+        <tr>
+            <td>
+                @item.GLAccountName
+            </td>
+            <td>
+                @item.Total.ToString("N02")
+            </td>
+            <td></td>
+
+        </tr>
+            }
+
+        }
+                <tr>
+                    <td><strong>Total Liability</strong></td>
+                    <td>&nbsp;</td>
+                    <td>@Model.Where(i => i.GLCatergoryName == "Liability").Sum(i => i.Total).ToString("N02")</td>
+                </tr>
+
+                <tr>
+                    <th>    Equity   </th>
+                    <th>    N    </th>
+                    <th>    N    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.GLCatergoryName == "Capital")
+                    {
+                        <tr>
+                            <td>
+                                @item.GLAccountName
+                            </td>
+                            <td>
+                                @item.Total.ToString("N02")
+                            </td>
+                            <td></td>
+
+                        </tr>
+                    }
+
+                }
+                <tr>
+                    <td><strong>Total Equity</strong></td>
+                    <td>&nbsp;</td>
+                    <td>@Model.Where(i => i.GLCatergoryName == "Capital").Sum(i => i.Total).ToString("N02")</td>
+                </tr>
+
+                @*<tr>
+                        <td>Profit & Loss</td>
+                        <td>&nbsp;</td>
+                        <td>@((Model.Where(i => i.GLCatergoryName == "Income").Sum(i => i.Total) - Model.Where(i => i.GLCatergoryName == "Expenditure").Sum(i => i.Total)).ToString("N02"))</td>
+                    </tr>*@
+
+            </table>
+
+            
+
+        </div>
+        </div>
+</div>

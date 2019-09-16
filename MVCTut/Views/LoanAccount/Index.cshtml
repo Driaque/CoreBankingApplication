@@ -1,0 +1,92 @@
+﻿<div id="page-wrapper">
+    @model PagedList.IPagedList<Core.LoanAccount>
+    @using PagedList.Mvc;
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            @using (Html.BeginForm("Index", "LoanAccount", FormMethod.Get))
+            {
+                <p>
+                    Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }     
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.CustomerAccount.AccountName)*@
+                        @Html.ActionLink("Customer Account Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+
+
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.PrincipalAmount)*@
+                        PrincipalAmount(N)
+                    </th>
+                    <th>
+                        Duration(Days)
+                    </th>
+                    <th>
+                        Interest Amount(N)
+                    </th>
+                    <th>
+                        @Html.ActionLink("Account Number", "Index", new { sortOrder = ViewBag.IdSortParm })
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.FinancialPostingDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FinancialPostingDateUpdated)
+                    </th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerAccount.AccountName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrincipalAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InterestAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoanAccountNumber)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.FinancialPostingDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FinancialPostingDateUpdated)
+                    </td>*@
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+                    </td>
+                </tr>
+                }
+
+            </table>
+            <br/>
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    </div>
+</div>

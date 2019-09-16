@@ -1,0 +1,97 @@
+﻿<div id="page-wrapper">
+        @model PagedList.IPagedList<Core.GLPosting>
+    @using PagedList.Mvc;
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            @using (Html.BeginForm("Index", "GLPosting", FormMethod.Get))
+            {
+                <p>
+                    Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }     
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.ActionLink("Account To Debit", "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.GLAccountToDebit.GLCode)*@
+                        @Html.ActionLink("GL Account Code", "Index", new { sortOrder = ViewBag.IdSortParm })
+
+
+                    </th>
+                    <th>
+                        @Html.ActionLink("Account To Credit", "Index", new { sortOrder = ViewBag.NameSortParm2 })
+                    </th>
+                    <th>
+                        @Html.ActionLink("GL Account Code", "Index", new { sortOrder = ViewBag.IdSortParm2 })
+                    </th>
+                    <th>
+                        Post Amount(N)
+                    </th>
+                    <th>
+                        Narration
+                    </th>
+                    <th>
+                        @Html.ActionLink("Transaction Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToDebit.GLAccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToDebit.GLCode)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToCredit.GLAccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToCredit.GLCode)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PostAmount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Narration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
+
+            </td>
+        </tr>
+        }
+
+            </table>
+            <br />
+
+
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+        </div>
+</div>

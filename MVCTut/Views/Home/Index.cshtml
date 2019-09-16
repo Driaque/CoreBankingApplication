@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    ViewBag.Msg = Session["UserAccessInfo"];
+    ViewBag.BranchCount = Session["BranchCount"];
+    ViewBag.TPCount = Session["TPostCount"];
+    ViewBag.TCount = Session["TCount"];
+}
+<div id="page-wrapper">
+    <h3>DashBoard</h3>
+@{ if (ViewBag.Msg != null)
+    {    <div class="alert alert-info alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-info"></i> Alert!</h4>
+        <h2>@ViewBag.Msg</h2>
+    </div>
+     }
+ }
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>@ViewBag.TCount</h3>
+                <p>Teller</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-user"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>@ViewBag.BranchCount</h3>
+                <p>Branches</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-map"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+
+                <h3>@ViewBag.TPCount</h3>
+                <p>Teller Postings</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-money"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+</div>

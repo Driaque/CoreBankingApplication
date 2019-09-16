@@ -1,0 +1,15 @@
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Core.dll
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Core.pdb
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Ninject.dll
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Ninject.Web.Common.dll
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Ninject.Web.Mvc.dll
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\WebActivatorEx.dll
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Ninject.xml
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Ninject.Web.Common.xml
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\bin\Debug\Ninject.Web.Mvc.xml
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\obj\Debug\Core.dll
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\obj\Debug\Core.pdb
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\obj\Debug\Core.csprojAssemblyReference.cache
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\danon\Documents\Visual Studio 2015\Projects\MVCTut\Core\obj\Debug\Core.csproj.CopyComplete

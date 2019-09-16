@@ -1,0 +1,38 @@
+﻿@model Core.EOD
+
+
+@{
+    ViewBag.Title = "Business";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //
+}
+
+<h2>Business</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <p>Current Financial Date @ViewBag.CurrentFinancialDate</p>
+        @{
+            if (!@ViewBag.IsOpen)
+            {
+                <h3>Business is Closed for the day.</h3>
+                <a href="@Url.Action("OpenBusiness", "EOD")"> Open Business</a>
+            }
+
+            else
+            {
+                <h3>Business is Open</h3>
+                <a href="@Url.Action("CloseBusiness", "EOD")"> Close Business</a>
+            }
+        }
+
+    </div>
+            }

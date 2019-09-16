@@ -1,0 +1,75 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<MVCTut.Models.LoanAccount>
+
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerAccount.AccountName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrincipalAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Duration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InterestAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LoanAccountNumber)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.FinancialPostingDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FinancialPostingDateUpdated)
+                    </th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerAccount.AccountName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrincipalAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InterestAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoanAccountNumber)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.FinancialPostingDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FinancialPostingDateUpdated)
+                    </td>*@
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+                    </td>
+                </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

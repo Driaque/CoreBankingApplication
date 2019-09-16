@@ -1,0 +1,51 @@
+﻿
+<div id="page-wrapper">
+    @model IEnumerable<Core.TrialBalance>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Trial Balance</h2>
+
+
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th> Account </th>                             <th>    Debit (N)   </th>                    <th>    Credit (N)   </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.GLAccountDebit  </td>       <td>  @item.Total.ToString("N02") </td>                <td>  </td>
+
+                    </tr>
+
+
+                }
+
+                @foreach (var item in Model)
+                {
+                   
+                        <tr>
+                            <td> @item.GLAccountCredit  </td>                <td>   </td>                     <td>  @item.Total.ToString("N02") </td>
+
+                        </tr>
+                    
+
+                }
+           
+
+                <tr>
+                    <td><strong>Total </strong></td>    <td>@Model.Where(i => !string.IsNullOrEmpty(i.GLAccountDebit)).Sum(i => i.Total).ToString("N02")</td>     <td>@Model.Where(i => !String.IsNullOrEmpty(i.GLAccountCredit)).Sum(i => i.Total).ToString("N02")</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>

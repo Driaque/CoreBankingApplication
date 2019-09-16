@@ -1,0 +1,83 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<Core.ProfitLoss>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Profit & Loss</h2>
+
+
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th> Income </th>
+                    <th>    N   </th>
+                    <th>    N   </th>
+             
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.GLCatergoryName == "Income")
+                    {
+                        <tr>
+                            <td>
+                                @item.GLAccountName
+                            </td>
+                            <td>
+                                @item.Total.ToString("N02")
+                            </td>
+                            <td></td>
+
+                        </tr>
+                    }
+
+                }
+                <tr>
+                    <td><small class="bg-blue-gradient"><strong>Total Income</strong></small></td>
+                    <td>&nbsp;</td>
+                    <td><strong>@Model.Where(i => i.GLCatergoryName == "Income").Sum(i => i.Total).ToString("N02")</strong></td>
+                </tr>
+                
+                <tr>
+                    <th>   Expense    </th>          <th>    N    </th>  <th>       N    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.GLCatergoryName == "Expense")
+                    {
+                        <tr>
+                            <td>
+                                @item.GLAccountName
+                            </td>
+                            <td>
+                                @item.Total.ToString("N02")
+                            </td>
+                            <td></td>
+
+                        </tr>
+                    }
+
+                }
+                <tr>
+                    <td><small class="bg-blue-gradient"><strong>Total Expenses</strong></small></td>
+                    <td>&nbsp;</td>
+                    <td>@Model.Where(i => i.GLCatergoryName == "Expense").Sum(i => i.Total).ToString("N02")</td>
+                </tr>
+
+                <tr>
+                    <td ><small class="pull-right  bg-green-gradient"><strong>Profit & Loss</strong></small></td>
+                    <td>&nbsp;</td>
+                    <td><strong>@((Model.Where(i => i.GLCatergoryName == "Income").Sum(i => i.Total) - Model.Where(i => i.GLCatergoryName == "Expense").Sum(i => i.Total)).ToString("N02"))</strong></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>

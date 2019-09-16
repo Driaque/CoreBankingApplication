@@ -1,0 +1,76 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<Core.TellerPosting>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Till.User.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerAccount.AccountName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerAccount.AccountNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Narration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TransactionDate)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Till.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAccount.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAccount.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Narration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+              
+            </td>
+        </tr>
+        }
+
+            </table>
+        </div>
+        </div>
+    </div>

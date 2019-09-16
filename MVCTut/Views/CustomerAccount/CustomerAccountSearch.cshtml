@@ -1,0 +1,70 @@
+﻿<div id="page-wrapper">
+    @model PagedList.IPagedList<Core.CustomerAccount>
+    @using PagedList.Mvc;
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            @using (Html.BeginForm("Index", "CustomerAccount", FormMethod.Get))
+            {
+                <p>
+                    Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.ActionLink("Account Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Account Number", "Index", new { sortOrder = ViewBag.IdSortParm })
+                    </th>
+                    <th>Account Balance</th>
+                    <th>Account Status</th>
+                    <th>Branch Name</th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountBalance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountStatus)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Branch.Name)
+                        </td>
+                      
+                        <td>
+                            @Html.ActionLink("Select", "Select", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <br />
+
+
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    </div>
+</div>

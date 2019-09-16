@@ -1,0 +1,64 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<MVCTut.Models.GLAccount>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLAccountName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLCode)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLCategory.GLCategoryName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Branch)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLCode)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GLCategory.GLCategoryName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.branchName)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+            </td>
+        </tr>
+        }
+
+            </table>
+        </div>
+        </div>
+    </div>

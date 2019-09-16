@@ -1,0 +1,7 @@
+﻿@model MVCTut.ViewModels.WidgetViewModel
+
+<div id="sidebars">
+    @Html.Partial("_Categories", Model.Categories)
+    @Html.Partial("_Tag", Model.Tags)
+    @Html.Partial("_LatestPosts", Model.LatestPosts)
+</div>

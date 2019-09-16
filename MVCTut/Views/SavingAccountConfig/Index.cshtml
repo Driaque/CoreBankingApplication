@@ -1,0 +1,47 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<Core.SavingAccountConfig>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditInterestRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterestExpenseGL)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreditInterestRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumBalance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InterestExpenseGL)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

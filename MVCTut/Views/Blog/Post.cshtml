@@ -1,0 +1,43 @@
+﻿@model Core.BlogTest.Post
+
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Post</h2>
+
+<div id="content">
+    <div class="post">
+        <div class="post-meta">
+            <div class="row">
+
+                <div class="post-title">
+                    <h1>@Html.PostLink(Model)</h1>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="post-category">
+                    <span>Category:</span> @Html.CategoryLink(Model.Category)
+                </div>
+
+                <div class="post-tags">
+                    <span>Tags:</span> @HtmlHelper.Tags(Html, Model.Tags)
+                </div>
+
+                <div class="posted-date">
+                    @Model.PostedOn.ToConfigLocalTime()
+                </div>
+
+            </div>
+        </div>
+
+        <div class="post-body">
+            @Html.Raw(Model.Description)
+        </div>
+
+    </div>
+</div>
+

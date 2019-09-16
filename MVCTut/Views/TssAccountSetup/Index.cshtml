@@ -1,0 +1,69 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<Core.TssAccount>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlAccount.GLAccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlAccount.GLCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlAccount.AccountBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlAccount.Branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateUpdated)
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GlAccount.GLAccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GlAccount.GLCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GlAccount.AccountBalance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GlAccount.Branch.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateUpdated)
+                </td>
+               
+            </tr>
+        }
+
+    </table>
+</div>

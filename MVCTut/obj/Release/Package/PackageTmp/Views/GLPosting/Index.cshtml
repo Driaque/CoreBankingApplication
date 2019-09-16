@@ -1,0 +1,80 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<MVCTut.Models.GLPosting>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLAccountToDebit.GLAccountName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLAccountToDebit.GLCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLAccountToCredit.GLAccountName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLAccountToCredit.GLCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Narration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TransactionDate)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToDebit.GLAccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToDebit.GLCode)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToCredit.GLAccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountToCredit.GLCode)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PostAmount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Narration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
+
+            </td>
+        </tr>
+        }
+
+            </table>
+        </div>
+        </div>
+</div>

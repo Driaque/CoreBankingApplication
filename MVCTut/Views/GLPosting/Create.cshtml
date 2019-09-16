@@ -1,0 +1,66 @@
+﻿<div id="page-wrapper">
+    @model Core.GLPosting
+
+    @{
+        ViewBag.Title = "Create";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="box box-primary">
+            <div class="form-horizontal">
+                <h4>GLPosting</h4>
+                <hr />
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GLAccountToDebit.Id, "Debit Account", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.GLAccountToDebit.Id, new SelectList(ViewBag.GLAccounts, "Id", "GLAccountName"), new { @class = "form-control chosen-select" })
+                        @Html.ValidationMessageFor(model => model.GLAccountToDebit.Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GLAccountToCredit.Id, "Credit Account", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.GLAccountToCredit.Id, new SelectList(ViewBag.GLAccounts, "Id", "GLAccountName"), new { @class = "form-control chosen-select" })
+                        @Html.ValidationMessageFor(model => model.GLAccountToCredit.Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PostAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.PostAmount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PostAmount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Narration, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.Narration, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Narration, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>

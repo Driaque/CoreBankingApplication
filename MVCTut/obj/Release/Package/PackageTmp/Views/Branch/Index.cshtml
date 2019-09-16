@@ -1,0 +1,50 @@
+﻿<div id="page-wrapper">
+
+    @model IEnumerable<MVCTut.Models.Branch>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.branchName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.branchAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.branchStatus)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.branchName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.branchAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.branchStatus)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.branchID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.branchID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.branchID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

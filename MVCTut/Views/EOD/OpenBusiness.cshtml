@@ -1,0 +1,29 @@
+﻿@model Core.EOD
+@{
+    ViewBag.Title = "Business";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>OpenBusiness</h2>
+
+
+
+@using (Html.BeginForm("OpenBusiness", "EOD", new { id = Model.Id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <p>Current Financial Date @ViewBag.CurrentFinancialDate</p>
+        @{
+            <div>
+                <input type="submit" value="Open Business" />
+            </div>
+
+        }
+
+    </div>
+}

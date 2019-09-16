@@ -1,0 +1,53 @@
+﻿<div id="page-wrapper">
+    @model IEnumerable<MVCTut.Models.TellerManagement>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="box box-primary">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TillAccount.GLAccountName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TillAccount.AccountBalance)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TillAccount.GLAccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TillAccount.AccountBalance)
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        }
+
+            </table>
+        </div>
+        </div>
+    </div>
