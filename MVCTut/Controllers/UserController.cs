@@ -72,7 +72,8 @@ namespace MVCTut.Controllers
                     }
                     int pageSize = 3;
                     int pageNumber = (page ?? 1);
-                    return View(users.ToPagedList(pageNumber, pageSize));
+                    return View(users.ToPagedList(pageNumber, pageSize));
+
                 }
                 //return View(_userRepository.GetAll());
                 return View(users.ToList());
@@ -323,7 +324,7 @@ namespace MVCTut.Controllers
             smtp.Port = 587;
 
             smtp.Credentials = new System.Net.NetworkCredential
-                 ("dan.onyeani@gmail.com", "daniel95");
+                 ("dan.onyeani@gmail.com", "---------");
 
             smtp.EnableSsl = true;
 
